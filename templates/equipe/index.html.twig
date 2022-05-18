@@ -1,0 +1,151 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Espace admin-équipes
+{% endblock %}
+
+{% block body %}
+	<div class="page-body">
+		<div class="container-fluid">
+			<div class="page-header dash-breadcrumb">
+				<div class="row">
+					<div class="col-6">
+						<h3 class="f-w-600">Equipe</h3>
+					</div>
+					<div class="col-6">
+						<div class="breadcrumb-sec">
+							<ul class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="{{ path('admin')}}">
+										<i data-feather="home"></i>
+									</a>
+								</li>
+								<li class="breadcrumb-item active">Equipe</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid starts-->
+		<div class="container-fluid product-wrapper">
+			<div class="product-grid">
+				<div class="feature-products">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="pro-filter-sec">
+								<div class="product-sidebar">
+									<div class="filter-section">
+										<div class="card">
+											<a href="{{ path('addEquipe')}}" style="color:black;">
+												<div class="card-header">
+													<h6 class="mb-0 f-w-600">Ajouter une équipe<span class="pull-right">
+															<i class="fa fa-plus toggle-data"></i>
+														</span>
+													</h6>
+												</div>
+											</a>
+
+										</div>
+									</div>
+								</div>
+								<div class="product-search">
+									<form>
+										<div class="form-group m-0">
+											<input class="form-control" id="search" type="search" placeholder="Chercher.." data-original-title="" title=""><i class="fa fa-search"></i>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="product-wrapper-grid">
+					<div class="row" id="result"></div>
+				</div>
+				<div class="product-wrapper-grid">
+					<div class="row" id="row">
+						{% for equipe in equipes %}
+							<div class="col-xl-3 col-lg-6 col-sm-6 xl-4">
+								<div class="card">
+									<div class="product-box">
+
+										<div class="product-img"><img class="img-fluid" src="images/equipe/{{ equipe.logo }}" alt="">
+											<div class="product-hover">
+												<ul>
+													<li><a title="Attestation d'inscription"href="{{ path('generate_attestation',{'id':equipe.id})}}"><i class="fa fa-file"></i></a></li>
+													<li><a title="Supprimer"href="{{ path('supprimer_equipe',{'id':equipe.id})}}"><i class="fa fa-trash"></i></a></li>
+													<li><a title="Modifier"href="{{ path('modifier_equipe',{'id':equipe.id})}}"><i class="fa fa-pen"></i></a></li>
+												</ul>
+											</div>
+										</div>
+
+										<div class="product-details">
+											<a href="#">
+												<h4>{{ equipe.nom }}</h4>
+											</a>
+
+											<p>{{ equipe.email }}</p>
+
+											<ul class="rating-pro">
+												<li><img src="https://countryflagsapi.com/png/{{ equipe.pays_origine }}" width="8%" height="8%"></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+
+				<div class="navigation">
+					{{ knp_pagination_render(equipes) }}
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid Ends-->
+	</div>
+
+
+	<script>
+		$(document).on("keyup", "#search", function () {
+var name = $(this).val();
+// console.log(name);
+$.ajax({
+type: 'GET',
+url: '/search',
+dataType: "text",
+data: {
+name: name
+},
+success: function (data) {
+$("#row").hide();
+$("#result").empty();
+if (name != "") {
+var result = JSON.parse(data);
+$.each(result, function (key, arr) {
+$.each(arr, function (id, value) {
+if (key === 'equipe') {
+if (id !== 'error') {
+var path = "images/equipe/" + value[3];
+var pathDelete = "/supprimer_equipe/" + value[0];
+var pathUpdate = "/modifier_equipe/" + value[0];
+var url = "https://countryflagsapi.com/png/" + value[5];
+var flag = "<img src=" + url + " width='8%' height='8%'>"
+$("#result").append('<div class="col-xl-3 col-lg-6 col-sm-6 xl-4"><div class="card"><div class="product-box"><div class="product-img"><img class="img-fluid" src=' + path + ' alt=""><div class="product-hover"><ul><li><a href=' + pathDelete + ' title="Supprimer"><i class="fa fa-trash"></i></a></li><li><a href=' + pathUpdate + ' title="Modifier"><i class="fa fa-pen"></i></a></li></ul></div></div><div class="product-details"><a href="#"><h4>' + value[1] + '</h4></a><p>' + value[2] + '</p><ul class="rating-pro"><li>' + flag + '</li></ul></div></div></div></div> ');
+} else {
+$("#result").append('<h1>' + value + '</h1>');
+}
+}
+});
+});
+} else {
+$("#row").show();
+}
+
+}
+});
+
+});
+	</script>
+{% endblock %}

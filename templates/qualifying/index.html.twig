@@ -1,0 +1,104 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Qualifyings
+{% endblock %}
+
+{% block body %}
+	<div class="page-body">
+		<div class="container-fluid">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-sm-6">
+						<h3>Qualifying</h3>
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="{{ path('admin')}}">
+									<i data-feather="home"></i>
+								</a>
+							</li>
+							<li class="breadcrumb-item">Tableau de bord</li>
+							<li class="breadcrumb-item active">Qualifying</li>
+						</ol>
+					</div>
+					<div
+						class="col-sm-6">
+						<!-- Bookmark Start-->
+						<div class="bookmark"></div>
+						<!-- Bookmark Ends-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid starts-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="feature-products">
+								<br>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="pro-filter-sec">
+											<div class="product-sidebar">
+												
+											</div>
+											<div class="product-search">
+												<form>
+													<div class="form-group m-0">
+														<input class="form-control" type="search" placeholder="Chercher.." data-original-title="" title=""><i class="fa fa-search"></i>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div>
+								<div class="item">
+									<div class="table-responsive manage-invoice">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>#
+													</th>
+													<th>Pilote</th>
+													<th>Course</th>
+													<th>Q1</th>
+													<th>Q2</th>
+													<th>Q3</th>
+													<th>Position</th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for qual in qualifyings %}
+													<tr>
+														<td>{{qual.id}}</td>
+														<td>{{qual.pilote.id}}</td>
+														<td>{{qual.id}}</td>
+														<td>{{qual.q1}}</td>
+														<td>{{qual.q2}}</td>
+														<td>{{qual.q3}}</td>
+														<td>{{qual.position}}</td>
+														<td>
+															<a href="{{path('editQualifying', {'idq':qual.id })}}" type="button" class="btn btn-warning btn-sm">Modifier</a>
+														</td>
+													</tr>
+												{% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

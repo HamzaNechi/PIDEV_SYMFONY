@@ -1,0 +1,116 @@
+{% extends 'base-back.html.twig'%}
+
+{% block title %}New Courses{% endblock %}
+
+{% block body %}
+    	
+		{#<div class="container-fluid">
+					<div class="page-header">
+						<div
+							class="row">{# <div class="col-sm-6">
+														                  <h3>Ajouter équipe</h3>
+														                  <ol class="breadcrumb">
+														                    <li class="breadcrumb-item"><a href="{{ path('admin')}}"><i data-feather="home"></i></a></li>
+														                    <li class="breadcrumb-item">Equipe</li>
+														                    <li class="breadcrumb-item active">Ajouter équipe</li>
+														                  </ol>
+														                </div> 
+		
+						</div>
+					</div>
+				</div>#}
+		<div class="page-body">
+			<div class="container-fluid">
+				<div class="page-header">
+					<div
+						class="row">{# <div class="col-sm-6">
+																			                  <h3>Ajouter équipe</h3>
+																			                  <ol class="breadcrumb">
+																			                    <li class="breadcrumb-item"><a href="{{ path('admin')}}"><i data-feather="home"></i></a></li>
+																			                    <li class="breadcrumb-item">Equipe</li>
+																			                    <li class="breadcrumb-item active">Ajouter équipe</li>
+																			                  </ol>
+																			                </div> #}
+
+					</div>
+				</div>
+			</div>
+			<!-- Container-fluid starts-->
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-12 col-xl-2"></div>
+					<div class="col-sm-12 col-xl-8">
+						<div class="row">
+
+							<div class="col-sm-12">
+								<div class="card">
+									<div class="card-header pb-0">
+										<h5>Ajouter circuit</h5>
+										<span>Using the
+											<a href="#">card</a>
+											component, you can extend the default collapse behavior to create an accordion.</span>
+									</div>
+									<div class="card-body">
+
+										{{ form_start(form,{'attr' :{'novalidate':'novalidate'}}) }}
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Nom</label>
+											<div
+												class="col-sm-9">
+												{# <input class="form-control" name="nom" type="text" placeholder="Nom"> #}
+												{{ form_errors(form.nom) }}
+												{{ form_widget(form.nom)}}
+											</div>
+										</div>
+
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Date de la course </label>
+											<div class="col-sm-9">
+												{{ form_errors(form.dateCourse) }}
+												{{ form_widget(form.dateCourse)}}
+											</div>
+										</div>
+
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputEmail3">Circuit Id</label>
+											<div class="col-sm-9">
+												{{ form_errors(form.circuitid) }}
+												{{ form_widget(form.circuitid)}}
+											</div>
+										</div>
+
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Organisateur</label>
+											<div class="col-sm-9">
+												{{ form_errors(form.organisateur) }}
+												{{ form_widget(form.organisateur)}}
+											</div>
+										</div>
+
+
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Saison</label>
+											<div class="col-sm-9">
+												{{ form_errors(form.saison) }}
+												{{ form_widget(form.saison)}}
+											</div>
+										</div>
+
+										
+
+									</div>
+									<div class="card-footer pt-0">
+										{{ form_widget(form.Ajouter)}}
+										{{ form_widget(form.Annuler)}}
+									</div>
+
+									{{ form_end(form)}}
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+    <a href="{{ path('app_courses_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,234 @@
+{% extends 'base-front.html.twig' %}
+
+{% block body %}
+{% if app.user %}
+<div class="tj-wrapper">
+			<div class="loader-outer" style="display: none;">
+				<div class="tj-loader" style="display: none;">
+					<img src="images/pre-loader.gif" alt="">
+					<h2>Loading...</h2>
+				</div>
+			</div>
+			<!--Style Switcher Section Start-->
+			<div class="theme_switcher">
+				<div class="theme_style_switcher">
+					<div class="style-switch-button">
+						<i class="fa fa-cog fa-spin"></i>
+					</div>
+					
+					  <a id="red" href="#" title="Red"></a>
+					  <a id="liteBlue" href="#" title="Lite Blue"></a>
+					  <a id="pink" href="#" title="Pink"></a>
+					  <a id="yellow" href="#" title="Yellow"></a>
+					  <a id="darkBlue" href="#" title="Dark Blue"></a>
+					  <a id="orange" href="#" title="Orange"></a>
+					  <a id="green" href="#" title="Green"></a>
+					  <a id="purple" href="#" title="Purple"></a>
+				</div>
+			</div>
+			<!--Style Switcher Section End-->
+			<header class="tj-header">
+				<!--Header Content Start-->
+				<div class="container">
+					<div class="row">
+						<!--Toprow Content Start-->
+										
+						<!--Toprow Content End-->
+					</div>
+				</div>
+				
+				<div class="tj-nav-row sticky">
+					<div class="container">
+						<div class="row">
+							<!--Nav Holder Start-->
+							<div class="tj-nav-holder">
+								<!--Menu Holder End-->
+								
+							</div><!--Nav Holder End-->
+						</div>
+					</div>
+				</div>
+			</header>
+			<!--Header Content End-->
+			
+			<!--Inner Banner Section Start-->
+	    	<div class="tj-inner-banner">
+	    		<div class="container">
+	    			<h2>Mon Compte</h2>
+	    		</div>
+	    	</div>
+			<!--Inner Banner Section End-->
+			
+			<!--Breadcrumb Section Start-->
+	    	<div class="tj-breadcrumb">
+				<div class="container">
+					<ul class="breadcrumb-list">
+						<li><a href="home-1.html">Home</a></li>
+						<li class="active">Mon Compte</li>
+					</ul>
+					
+				</div>
+	    	</div>
+			<!--Breadcrumb Section End-->
+			
+			
+			<!--User Account Section Start-->	
+			<section class="tj-account-frm">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="tj-tabs">
+								<ul class="nav nav-tabs" role="tablist">
+									<ul class="nav nav-tabs" role="tablist">
+				<li class=""><a href="{{ path ('affichageC') }}" data-toggle="tab" aria-expanded="false"><i class="far fa-user"></i> Mon compte</a></li>
+								</ul>
+								</ul>
+							</div>
+							<div class="tab-content">
+								<div class="tab-pane active" id="confirm_booking">
+									<form class="account-frm" method="POST">
+										<div class="col-md-6 col-sm-6">
+											<div class="account-field">
+												<label>Name</label>
+												<h4>{{ app.user.name }}</h4>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6">
+											<div class="account-field">
+												<label>Telephone</label>
+												<h4>{{ app.user.tel }}</h4>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6">
+											<div class="account-field">
+												<label>Email</label>
+												<h4>{{ app.user.email }}</h4>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6">
+											<div class="account-field">
+												<label>	Photo de profil</label>
+												<img class="rounded-circle" src="{{app.user.imagename}}" alt="">
+												<img class="rounded-circle" src="/images/user/{{app.user.imagename}}"  alt="">
+												
+											</div>
+										</div>
+		<a href="{{ path ('modifier_compte',{id :app.user.id}) }}"><div class="save-btn">Modifier<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></div></a>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> 
+				{% endif %}
+			</section>
+			<!--User Account Section End-->	
+			
+			
+			
+	
+			
+			<!--Call To Action Content Start-->
+		{#	<section class="tj-cal-to-action">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-4">
+							<div class="cta-box">
+								<img src="images/cta-icon1.png" alt="">
+								<div class="cta-text">
+									<strong>Best Price Guaranteed</strong>
+									<p>A more recently with desktop softy  like aldus page maker.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<div class="cta-box">
+								<img src="images/cta-icon2.png" alt="">
+								<div class="cta-text">
+									<strong>24/7 Customer Care</strong>
+									<p>A more recently with desktop softy  like aldus page maker.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<div class="cta-box">
+								<img src="images/cta-icon3.png" alt="">
+								<div class="cta-text">
+									<strong>Easy Bookings</strong>
+									<p>A more recently with desktop softy  like aldus page maker.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--Call To Action Content End-->
+			<!--Footer Content Start-->
+			<section class="tj-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="about-widget widget">
+								<h3>About PrimeCab</h3>
+								<p>Search for will uncover many web sites variables onto of passages of lorem ipsum available but the majority the words all predefined humour to met chunks recently with desktop.</p>
+								<ul class="fsocial-links">
+									<li><a href="http://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+									<li><a href="http://www.twitter.com/"><i class="fab fa-twitter"></i></a></li>
+									<li><a href="http://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+									<li><a href="http://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a></li>
+									<li><a href="http://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="links-widget widget">
+								<h3>Explore Links</h3>
+								<ul class="flinks-list">
+									<li><i class="far fa-folder"></i><a href="#">Coupons</a></li>
+									<li><i class="far fa-folder"></i><a href="#">Sitemap</a></li>
+									<li><i class="far fa-folder"></i><a href="#">Cancellation</a></li>
+									<li><i class="far fa-folder"></i><a href="#">Terms</a></li>
+									<li><i class="far fa-folder"></i><a href="#">Privacy Policy</a></li>
+									<li><i class="far fa-folder"></i><a href="#">Contact Us</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="recent-tweets widget">
+								<h3>Recent Tweets</h3>
+								<div class="tj-tweets"><span>Loading!</span></div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="contact-info widget">
+								<h3>Contact Info</h3>
+								<ul class="contact-box">
+									<li>
+										<i class="fas fa-home" aria-hidden="true"></i>   10A, PrimeCab, San Andreno, United States.
+									</li>
+									<li>
+										<i class="far fa-envelope-open"></i>
+										<a href="mailto:primecab@booking.com">
+										primecab@booking.com</a>
+									</li>
+									<li>
+										<i class="fas fa-phone-square"></i>
+										+1-333-444-555
+									</li>
+									<li>
+										<i class="fas fa-globe-asia"></i>
+										<a href="www.primecab.html">www.primecab.com</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>#}
+			<!--Footer Content End-->
+			<!--Footer Copyright Start-->
+			
+			<!--Footer Copyright End-->
+		</div>
+                        {% endblock %}
+					

@@ -1,0 +1,52 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Courses{% endblock %}
+
+{% block body %}
+ 
+<div class="fleet-list">
+										<div class="row">
+											<!--Fleet List Box Start-->
+											<div class="col-md-12 col-sm-12">
+												<div class="fleet-list-box">
+													<!--Fleet List Thumb Start-->
+                                                    
+													<figure class="fleet-thumb">
+													{%
+														set qr="images/QRcode/" ~ course.nom ~ ".png"
+													%}
+														<img src="{{ asset(qr) }}" style="width : 100% ; height : 100% ;" alt="">
+													</figure>
+													<!--Fleet List Thumb End-->
+													<!--Fleet List Text Start-->
+													<div class="fleet-text">
+														<div class="price-box">
+															<span class="rated">Top Rated</span>
+															<strong>$190 <span>/ day</span></strong>
+														</div>
+														<h3>{{course.nom}}</h3>
+														<ul class="fleet-meta">
+															<li><i class="fas fa-taxi"></i>{{course.circuitid.nom}}</li>
+															<li><i class="fas fa-user-circle"></i>{{course.circuitid.capacite}}</li>
+															<li><i class="fas fa-tachometer-alt"></i>{{ course.dateCourse ? course.dateCourse|date('Y-m-d') : '' }}</li>
+															<li><i class="fas fa-briefcase"></i>{{ course.circuitid.pays}}</li>
+														</ul>
+														<span class="fas fa-star"></span>
+														<span class="fas fa-star"></span>
+														<span class="fas fa-star"></span>
+														<span class="fas fa-star"></span>
+														<span class="fas fa-star"></span>
+														<p>{{course.circuitid.description}}</p>
+														<a href="{{ path('app_tickets_new',{'id':course.id})}}" class="tj-btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+													</div>
+													<!--Fleet List Text Start-->
+												</div>
+											</div>
+											<!--Fleet List Box End-->
+											
+												</div>
+											</div>
+											<!--Fleet List Box End-->
+                                            </div>
+                                            </div>
+                                    {% endblock %}

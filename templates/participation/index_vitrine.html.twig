@@ -1,0 +1,125 @@
+{% extends 'base-front.html.twig' %}
+{% block title %}Participations
+{% endblock %}
+
+
+{% block body %}
+	<div class="page-body">
+		<div class="tj-inner-banner">
+			<div class="container">
+				<h2>Participations</h2>
+			</div>
+		</div>
+		<div class="tj-breadcrumb">
+			<div class="container">
+				<ul class="breadcrumb-list">
+					<li>
+						<a href="{{ path('app_index')}}">Accueil</a>
+					</li>
+					<li class="active">Participations</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Participation </h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									...
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							<div class="feature-products">
+								<br>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-10">
+									<div class="item">
+										<div class="table-responsive invoice-table ">
+											<table class="table table table-striped">
+												<thead>
+													<tr>
+														<th>
+															<h2>Num Pilote</h2>
+														</th>
+														<th>
+															<h2>Equipe</h2>
+														</th>
+														<th>
+															<h2>Course</h2>
+														</th>
+														<th>
+															<h2>Grid</h2>
+														</th>
+														<th>
+															<h2>Position</h2>
+														</th>
+														<th>
+															<h2>Points</h2>
+														</th>
+
+													</tr>
+												</thead>
+												<tbody>
+													{% for p in participations %}
+														<tr data-toggle="modal" data-id={{p.id}} data-target="#exampleModal">
+
+															<td>
+																<h4>{{p.pilote.numero}}</h4>
+															</td>
+															<td>
+																<h4>{{p.equipe.nom}}</h4>
+															</td>
+															<td>
+																<h4>{{p.course.nom}}</h4>
+															</td>
+															<td>
+																<h4>{{p.grid}}</h4>
+															</td>
+															<td>
+																<h4>{{p.position}}</h4>
+															</td>
+															<td>
+																<h4>{{p.points}}</h4>
+															</td>
+
+														</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function () {
+$('#exampleModal').modal({keyboard: true, backdrop: "static", show: false}).on('show', function () { // subscribe to show method
+var getIdFromRow = $(event.target).closest('tr').data('id');
+// get the id from tr
+// make your ajax call populate items or what even you need
+$(this).find('#orderDetails').html($('<b> Order Id selected: ' + getIdFromRow + '</b>'))
+});
+});
+	</script>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Saisons index{% endblock %}
+
+{% block body %}
+ <div class="page-body">
+    <h1>Saisons index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SaisonId</th>
+                <th>Year</th>
+                <th>DateDebut</th>
+                <th>DateFin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for saison in saisons %}
+            <tr>
+                <td>{{ saison.id }}</td>
+                <td>{{ saison.year }}</td>
+                <td>{{ saison.dateDebut ? saison.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ saison.dateFin ? saison.dateFin|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_saisons_show', {'saisonId': saison.id}) }}">show</a>
+                    <a href="{{ path('app_saisons_edit', {'id': saison.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_saisons_new') }}">Create new</a>
+     </d>
+{% endblock %}

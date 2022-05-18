@@ -1,0 +1,88 @@
+{% extends 'base-front.html.twig' %}
+{% block title %}Qualifyings
+{% endblock %}
+
+
+{% block body %}
+	<div class="page-body">
+		<div class="tj-inner-banner">
+			<div class="container">
+				<h2>Qualifyings</h2>
+			</div>
+		</div>
+		<!--Inner Banner Section End-->
+
+		<!--Breadcrumb Section Start-->
+		<div class="tj-breadcrumb">
+			<div class="container">
+				<ul class="breadcrumb-list">
+					<li>
+						<a href="{{ path('app_index')}}">Accueil</a>
+					</li>
+					<li class="active">Qualifyings</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="feature-products">
+								<br>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="pro-filter-sec">
+
+											<div class="product-search">
+												<form>
+													<div class="form-group m-0">
+														<input class="form-control" type="search" placeholder="Chercher.." data-original-title="" title=""><i class="fa fa-search"></i>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div>
+								<div class="item">
+									<div class="table-responsive manage-invoice">
+										<table class="table table-xl">
+											<thead>
+												<tr>
+													<th>Pilote</th>
+													<th>Course</th>
+													<th>Q1</th>
+													<th>Q2</th>
+													<th>Q3</th>
+													<th>Position</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for qual in qualifyings %}
+													<tr>
+														<td>{{qual.pilote.id}}</td>
+														<td>{{qual.id}}</td>
+														<td>{{qual.q1}}</td>
+														<td>{{qual.q2}}</td>
+														<td>{{qual.q3}}</td>
+														<td>{{qual.position}}</td>
+
+													</tr>
+												{% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	{% endblock %}

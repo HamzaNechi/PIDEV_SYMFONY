@@ -1,0 +1,39 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block title %}Edit équipe{% endblock %}
+
+{% block body %}
+<div class="page-body">
+    <h1>ClassementPilote</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ClassementPId</th>
+                <td>{{ classement_pilote.id }}</td>
+            </tr>
+          
+            <tr>
+                <th>PilotesPiloteId</th>
+                <td>{{ classement_pilote.pilotesPiloteId }}</td>
+            </tr>
+            <tr>
+                <th>PointsTotal</th>
+                <td>{{ classement_pilote.pointsTotal }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ classement_pilote.position }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_classement_pilotes_index') }}">back to list</a>
+
+    <a href="{{ path('app_classement_pilotes_edit', {'classementPId': classement_pilote.id}) }}">edit</a>
+
+    {{ include('classement_pilotes/_delete_form.html.twig') }}
+    </d>
+{% endblock %}

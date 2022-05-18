@@ -1,0 +1,15 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Edit ClassementPilotes{% endblock %}
+
+{% block body %}
+<div class="page-body">
+    <h1>Edit ClassementPilotes</h1>
+
+    {{ include('classement_pilotes/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_classement_pilotes_index') }}">back to list</a>
+
+    {{ include('classement_pilotes/_delete_form.html.twig') }}
+    </d>
+{% endblock %}

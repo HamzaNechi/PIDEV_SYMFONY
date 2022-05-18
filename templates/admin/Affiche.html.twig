@@ -1,0 +1,147 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block title %}Liste des Utilisateurs
+{% endblock %}
+
+{% block body %}
+	<div class="page-body">
+
+		<div class="container-fluid">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-sm-6">
+						<h3>Comptes</h3>
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="{{ path('admin')}}">
+									<i data-feather="home"></i>
+								</a>
+							</li>
+							<li class="breadcrumb-item active">Comptes</li>
+						</ol>
+					</div>
+					<div
+						class="col-sm-6">
+						<!-- Bookmark Start-->
+						<div class="bookmark">
+							<ul>
+								<li>
+									<a href="chat.html" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat">
+										<i data-feather="message-square"></i>
+									</a>
+								</li>
+								<li>
+									<a href="product-page.html" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons">
+										<i data-feather="shopping-bag"></i>
+									</a>
+								</li>
+								<li>
+									<a href="user-profile.html" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning">
+										<i data-feather="users"></i>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)">
+										<i class="bookmark-search" data-feather="heart"></i>
+									</a>
+									<form class="form-inline search-form">
+										<div class="form-group form-control-search">
+											<input type="text" placeholder="Search..">
+										</div>
+									</form>
+								</li>
+							</ul>
+						</div>
+						<!-- Bookmark Ends-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+
+			{% for u in user %}
+				<div class="col-3">
+					<div class="card custom-card">
+						<div class="card-header p-0">
+							{% if u.imagename is null %}
+								<img class="card-img-top" src="/images/user/sbcf-default-avatar.png" alt="">
+							{% else %}
+								{% if u.imgstatus is null %}
+									<img class="card-img-top" src="{{u.imagename}}" alt="">
+								{% else %}
+									<img class="card-img-top" src="/images/user/{{u.imagename}}" alt="">
+								{% endif %}
+							{% endif %}
+						</div>
+						<div class="text-center profile-details">
+							<h4>{{u.email}}</h4>
+							<h6>{{u.name}}</h6>
+							<h6>{{u.tel}}</h6>
+						</div>
+						<div class="card-footer row">
+							<div class="col-4 col-sm-4">
+								<a href="{{ path ('supp',{id :u.id}) }}">
+									<button type="button" class="btn btn-outline-danger">
+										<svg xmlns="http://www.w3.org/2000/svg" width="10" height="20" fill="currentColor" class="bi bi-trash" viewbox="0 0 16 16">
+											<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+											<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+										</svg>
+									</button>
+								</a>
+							</div>
+							<div class="col-4 col-sm-4">
+								<h6>ID</h6>
+								<h3>{{u.id}}</h3>
+							</div>
+							<div class="col-4 col-sm-4">
+								<a href="{{ path ('update',{id :u.id}) }}">
+									<button type="button" class="btn btn-primary" href=" ">
+										<svg xmlns="http://www.w3.org/2000/svg" width="10" height="20" fill="currentColor" class="bi bi-pen" viewbox="0 0 16 16">
+											<path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"></path>
+										</svg>
+									</button>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+
+		{#}  <a href="{{ path ('supp',{id :u.id}) }}"> <button type="button" class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+		  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+		  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+		</svg></button></a>
+		                    </div>
+		                    <div class="col-4 col-sm-4">
+		                      <h6>Id</h6>
+		                      <h3>{{ u.id }}</h3>
+		                    </div>
+		                    <div class="col-4 col-sm-4">
+		<a href="{{ path ('update',{id :u.id}) }}"><button type="button" class="btn btn-primary" href=" ">
+		                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+		  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"></path>
+		</svg>
+		              </button></a>
+		                    </div>
+		                  </div>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          #}
+	</div>
+{% endblock %}
+{#  <td><a href="{{ path ('supp',{id :u.id}) }}">Delete</a></td>
+        <td><a href=" {{ path ('update',{id :u.id}) }}">Update</a></td>
+        </tr {% endfor %}>
+      </table>
+    </div>
+
+     </div>  
+    <hr>
+     <button style="margin-left: 200px"><a href="{{ path ('ajout') }}">ajouter</a></button>
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>    
+#}

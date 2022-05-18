@@ -1,0 +1,140 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block title %}modifier membre
+{% endblock %}
+
+{% block body %}
+	<div class="page-body">
+		<div class="container-fluid">
+			<div class="page-header">
+				<div class="row"></div>
+			</div>
+		</div>
+		<!-- Container-fluid starts-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-xl-2"></div>
+				<div class="col-sm-12 col-xl-8">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-header pb-0">
+									<h5>Modifier membre</h5>
+								</div>
+								<div class="card-body">
+
+									<form class="theme-form" enctype="multipart/form-data" action="{{ path('update_membre',{'id':membre.id})}}" method="post">
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Nom</label>
+											<div class="col-sm-9">
+												<input class="form-control" name="nom" type="text" placeholder="Nom" value="{{ membre.nom }}">
+											</div>
+										</div>
+
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Image</label>
+											<div class="col-sm-9">
+												<input class="form-control" name="image" type="file">
+												<input type="hidden" name="path" value="{{ membre.image }}">
+											</div>
+										</div>
+
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputEmail3">Role</label>
+											<div class="col-sm-9">
+												<select class="form-select" name="role" id="membre_role">
+													{% if membre.role == "Pilote" %}
+														<option value="Pilote" selected>Pilote</option>
+														<option value="Chef d'équipe">Chef d'équipe</option>
+														<option value="Mecanicien">Mecanicien</option>
+													{% endif %}
+
+													{% if membre.role == "Chef d'équipe" %}
+														<option value="Pilote">Pilote</option>
+														<option value="Chef d'équipe" selected>Chef d'équipe</option>
+														<option value="Mecanicien">Mecanicien</option>
+													{% endif %}
+
+													{% if membre.role == "Mecanicien" %}
+														<option value="Pilote">Pilote</option>
+														<option value="Chef d'équipe">Chef d'équipe</option>
+														<option value="Mecanicien" selected>Mecanicien</option>
+													{% endif %}
+
+												</select>
+											</div>
+										</div>
+
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Nationalité</label>
+											<div class="col-sm-9">
+												<input class="form-control" name="nationalite" type="text" value="{{ membre.nationalite }}">
+											</div>
+										</div>
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Date de naissance</label>
+											<div class="col-sm-9">
+												<input class="form-control" name="date" type="date" value="{{ membre.datenaissance|date('Y-m-d') }}">
+											</div>
+										</div>
+
+
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Équipe</label>
+											<div class="col-sm-9">
+												<select class="form-select" name="equipe">
+													{% for equipe in equipes %}
+														{% if equipe.id == membre.equipe.id %}
+															<option value="{{ equipe.id }}" selected>{{ equipe.nom }}</option>
+														{% else %}
+															<option value="{{ equipe.id }}">{{ equipe.nom }}</option>
+														{% endif %}
+													{% endfor %}
+												</select>
+											</div>
+										</div>
+
+										{% if (membre.role == "Pilote") and (pilote != null) %}
+											<div class="mb-3 row" id="num">
+												<label class="col-sm-3 col-form-label" for="inputPassword3">Numéro</label>
+												<div class="col-sm-9">
+													<input type="text" name="numero" class="form-control" value="{{ pilote.numero }}">
+												</div>
+											</div>
+										{% else %}
+											<div class="mb-3 row" id="num" style="display:none;">
+												<label class="col-sm-3 col-form-label" for="inputPassword3">Numéro</label>
+												<div class="col-sm-9">
+													<input type="text" name="numero" id="num" class="form-control">
+												</div>
+											</div>
+										{% endif %}
+
+									</div>
+									<div class="card-footer pt-0">
+										<button class="btn btn-primary" type="submit">Modifier</button>
+										<button class="btn btn-dark" type="reset">Annuler</button>
+									</div>
+
+								  </form>
+							  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid Ends-->
+	</div>
+
+	<script>
+		$(document).on("change", "#membre_role", function (e) {
+var role = $(this).val();
+if (role == "Pilote") {
+$("#num").show();
+} else {
+$("#num").hide();
+}
+});
+	</script>
+{% endblock %}

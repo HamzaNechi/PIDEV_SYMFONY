@@ -1,0 +1,61 @@
+{% extends 'base-inscription.html.twig' %}
+
+{% block body %}
+
+	<div class="col-md-9 col-sm-12">
+		{{ form_start(formRegistration,{attr:{novalidate:'novalidate'}}) }}
+		<div class="field-holder">
+			<label for="Name" class="form-label">
+				Name</label>
+			{{ form_widget(formRegistration.name,{'attr':{'class':'form-control'},
+												 'attr': {'autocomplete': 'off'} }) }}
+			{{ form_errors(formRegistration.name,{'attr':{'class':'text-danger'}}) }}
+		</div>
+		<div class="field-holder">
+			<label for="Email" class="form-label">Email</label>
+			{{ form_widget(formRegistration.email,{'attr':{'class':'form-control'},
+												'attr': {'autocomplete': 'off'} }) }}
+			{{ form_errors(formRegistration.email,{'attr':{'class':'text-danger'}}) }}
+		</div>
+		<div class="field-holder">
+			<label for="Password" class="form-label">Password</label>
+			{{ form_widget(formRegistration.password.first,{'attr':{'class':'form-control'}}) }}
+			{{ form_errors(formRegistration.password.first,{'attr':{'class':'text-danger'}}) }}
+		</div>
+		<div class="field-holder">
+			<label for="Password" class="form-label">Confirm Password</label>
+			{{ form_widget(formRegistration.password.second,{'attr':{'class':'form-control'}}) }}
+			{{ form_errors(formRegistration.password.second,{'attr':{'class':'text-danger'}}) }}
+		</div>
+		<div class="field-holder">
+			<label for="tel" class="form-label">n° Telephone</label>
+			{{ form_widget(formRegistration.tel,{'attr':{'class':'form-control'},
+												'attr': {'autocomplete': 'off'} }) }}
+			{{ form_errors(formRegistration.tel,{'attr':{'class':'text-danger'}}) }}
+		</div>
+		<div class="field-holder">
+			<label for="imagename" class="form-label">Photo de profil</label>
+			{{ form_widget(formRegistration.imagename,{'attr':{'class':'form-control'}}) }}
+			{{ form_errors(formRegistration.imagename,{'attr':{'class':'text-danger'}}) }}
+		</div>
+
+		<label for="terms">
+			<input type="checkbox" name="terms" id="terms">
+			I accept terms &amp; conditions
+		</label>
+		<br>
+		<div>
+			<button type="submit" class="btn btn-danger">Start now
+				<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+			</button>
+
+			{{ form_end(formRegistration) }}
+
+			<div class="col-md-12">
+				<a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="{{ path ('app_google') }}"><img src="https://img.icons8.com/color/16/000000/google-logo.png">
+					Signup Using Google</a>
+			</div>
+
+		</div>
+
+	{% endblock %}

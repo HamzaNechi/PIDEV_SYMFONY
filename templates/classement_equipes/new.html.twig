@@ -1,0 +1,13 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}New ClassementEquipes{% endblock %}
+
+{% block body %}
+<div class="page-body">
+    <h1>Create new ClassementEquipes</h1>
+
+    {{ include('classement_equipes/_form.html.twig') }}
+
+    <a href="{{ path('app_classement_equipes_index') }}">back to list</a>
+    </d>
+{% endblock %}

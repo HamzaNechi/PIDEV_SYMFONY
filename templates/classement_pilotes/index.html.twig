@@ -1,0 +1,46 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Edit équipe{% endblock %}
+
+{% block body %}
+<div class="page-body">
+    <h1>ClassementPilote index</h1>
+<a href="{{ path('tri') }}">trti</a>
+                    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ClassementPId</th>
+                <th>SaisonYear</th>
+                <th>PilotesPiloteId</th>
+                <th>PointsTotal</th>
+                <th>Position</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for classement_pilote in classement_pilotes %}
+            <tr>
+                <td>{{ classement_pilote.id }}</td>
+                <td>{{ classement_pilote.saisonsYear.year}}</td>
+                <td>{{ classement_pilote.pilotesPiloteId }}</td>
+                <td>{{ classement_pilote.pointsTotal }}</td>
+                <td>{{ classement_pilote.position }}</td>
+                <td>
+                    <a href="{{ path('app_classement_pilotes_show', {'classementPId': classement_pilote.id}) }}">show</a>
+                    <a href="{{ path('app_classement_pilotes_edit', {'classementPId': classement_pilote.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_classement_pilotes_new') }}">Create new</a>
+    <div>
+    <a href="{{ path('classement_list') }}">   Imprimer   </a></div>
+    </d>
+{% endblock %}

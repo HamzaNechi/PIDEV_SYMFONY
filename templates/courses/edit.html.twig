@@ -1,0 +1,17 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Edit Courses{% endblock %}
+
+{% block body %}
+    <h1>Edit Courses</h1>
+    <div class="page-body">
+    {{ form_start(f) }}
+    
+        
+    
+    {{ form_end(f) }}
+    
+
+    <a href="{{ path('app_courses_index') }}">back to list</a>
+    </div>
+{% endblock %}

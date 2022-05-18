@@ -1,0 +1,60 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}équipes{% endblock %}
+
+{% block body %}
+<!--Inner Banner Section Start-->
+	    	<div class="tj-inner-banner">
+	    		<div class="container">
+	    			<h2>Nos équipes</h2>
+	    		</div>
+	    	</div>
+			<!--Inner Banner Section End-->
+			
+			<!--Breadcrumb Section Start-->
+	    	<div class="tj-breadcrumb">
+				<div class="container">
+					<ul class="breadcrumb-list">
+						<li><a href="{{ path('app_index')}}">Accueil</a></li>
+						<li class="active">Équipes</li>
+					</ul>
+				</div>
+	    	</div>
+			<!--Breadcrumb Section End-->
+			
+			<!--Cab Services Section Start-->
+			<section class="cab-services">
+				<div class="container">
+					<div class="row">
+						<!--Cab Services Heading Start-->
+						<div class="tj-heading-style">
+							<h3>Nos équipes</h3>
+							<p>Lorem Ipsum passages, and more recently with desktop publishing software like aldus pageMaker including versions.</p>
+						</div>
+						<!--Cab Services Heading End-->
+						<!--Cab Services Outer Start-->
+						{% for equipe in equipes %}
+						<a href="{{ path('membre_vitrine',{'id':equipe.id})}}">
+						<div class="col-md-4 col-sm-4">
+							<div class="cab-service-box">
+								<!--Cab Services Thumb Start-->
+								<figure class="service-thumb">
+									<img src="images/equipe/{{ equipe.logo }}" width="110%" height="120%" alt=""/>
+								</figure>
+								<!--Cab Services Thumb End-->
+								<!--Cab Services Info Start-->
+								<div class="service-desc">
+									<h4>{{ equipe.nom }}</h4>
+									<p>{{ equipe.email }}</p>
+								</div>
+								<!--Cab Services Info End-->
+							</div>
+						</div>
+						</a>
+						{% endfor %}
+						
+					</div>
+				</div>
+			</section>		
+			<!--Cab Services Section End-->
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base-connexion.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+
+
+{% block login %}
+
+	<form class="login-frm"  method="post">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+		<div class="field-holder">
+            <span class="far fa-envelope"></span>
+			<input type="email" value="{{ last_username }}" name="email" id="inputEmail"  autocomplete="email" placeholder="Votre Adresse email" required autofocus>
+		</div>
+		<br>
+		<div class="field-holder">
+			<span class="fas fa-lock"></span>
+			<input type="password" name="password" id="inputPassword" autocomplete="current-password" placeholder="Votre Password" required>
+		</div>
+			<a href="{{ path ('app_forget_password') }}" class="forget-pass" >mot de passe oublié?</a>
+		<input
+		type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+		{#
+						        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+						        See https://symfony.com/doc/current/security/remember_me.html
+						
+						        <div class="checkbox mb-3">
+						            <label>
+						                <input type="checkbox" name="_remember_me"> Remember me
+						            </label>
+						        </div>
+						    #}
+		<button class="reg-btn" type="submit">
+			Login
+            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+		</button>
+
+        {# <button  type="submit" class="google-btn" href="{{ path ('app_google') }}"><img src="https://img.icons8.com/color/16/000000/google-logo.png">
+
+Login With Google
+        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button> #}
+        
+	<div class="col-md-12">
+		<a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="{{ path ('app_google') }}"><img src="https://img.icons8.com/color/16/000000/google-logo.png">
+			Login With Google</a>
+	</div>
+	</form>
+{% endblock %}

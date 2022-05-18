@@ -1,0 +1,36 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}ClassementEquipes{% endblock %}
+
+{% block body %}
+<div class="page-body">
+    <h1>ClassementEquipes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ClassementEId</th>
+                <td>{{ classement_equipe.id }}</td>
+            </tr>
+            <tr>
+                <th>EquipesEquipeId</th>
+                <td>{{ classement_equipe.equipesEquipeId }}</td>
+            </tr>
+            <tr>
+                <th>PointsTotal</th>
+                <td>{{ classement_equipe.pointsTotal }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ classement_equipe.position }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_classement_equipes_index') }}">back to list</a>
+
+    <a href="{{ path('app_classement_equipes_edit', {'classementEId': classement_equipe.classementEId}) }}">edit</a>
+
+    {{ include('classement_equipes/_delete_form.html.twig') }}
+</d>
+{% endblock %}

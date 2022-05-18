@@ -1,0 +1,78 @@
+{% extends 'base-back.html.twig' %}
+{% block title %}Modifier participation
+{% endblock %}
+{% block body %}
+	<div class="page-body">
+		<div class="container-fluid">
+			<div class="page-header">
+				<div class="row"></div>
+			</div>
+		</div>
+		<!-- Container-fluid starts-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-xl-2"></div>
+				<div class="col-sm-12 col-xl-8">
+					<div class="row">
+
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-header pb-0">
+									<h5>Modifier participation</h5>
+								</div>
+								<div class="card-body">
+									{{ form_start(form) }}
+									<div class="mb-3 row">
+										<label class="col-sm-3 col-form-label">Pilote</label>
+										<div
+											class="col-sm-9">
+											{# <input class="form-control" name="nom" type="text" placeholder="Nom"> #}
+											{{ form_widget(form.pilote)}}
+										</div>
+									</div>
+
+									<div class="mb-3 row">
+										<label class="col-sm-3 col-form-label">Equipe</label>
+										<div class="col-sm-9">
+											{{ form_widget(form.equipe, )}}
+										</div>
+									</div>
+
+									<div class="mb-3 row">
+										<label class="col-sm-3 col-form-label">Course</label>
+										<div class="col-sm-9">
+											{{ form_widget(form.course)}}
+										</div>
+									</div>
+									<div class="mb-3 row">
+										<label class="col-sm-3 col-form-label">Position</label>
+										<div class="col-sm-9">
+											{{ form_widget(form.position)}}
+										</div>
+									</div>
+
+									<div class="mb-3 row">
+										<label class="col-sm-3 col-form-label">Points</label>
+										<div class="col-sm-9">
+											{{ form_widget(form.points)}}
+										</div>
+									</div>
+
+									{# {{ form(form)}} #}
+								</div>
+								<div class="card-footer pt-0">
+									{{ form_widget(form.Modifier)}}
+									{{ form_widget(form.Annuler)}}
+								</div>
+
+								{{ form_end(form)}}
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- Container-fluid Ends-->
+	</div>
+{% endblock %}

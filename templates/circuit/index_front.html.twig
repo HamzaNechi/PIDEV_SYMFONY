@@ -1,0 +1,34 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Circuit{% endblock %}
+
+{% block body %}
+<section class="tj-deals">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="tj-heading-style">
+								<h3>Nos Circuits</h3>
+							</div>
+						</div>
+						<!-- Deal Box Content Start-->
+                        {% for ci in c %}
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="deal-box">
+								<figure class="deal-thumb">
+								<img src="images/circuits/{{ ci.image }}" width="100%" height="150%" alt=""/>
+								</figure>
+								<div class="deal-info">
+									<h4>{{ci.nom}}</h4>
+									<span>{{ci.pays}} <strong></strong></span>
+                                    <span>{{ci.longeur}} KM</span>
+											</div>
+								<!--Cab Services Info End-->
+							</div>
+						</div>
+						{% endfor %}
+						
+					</div>
+				</div>
+			</section>
+{% endblock %}

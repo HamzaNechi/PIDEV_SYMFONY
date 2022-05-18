@@ -1,0 +1,45 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Edit équipe{% endblock %}
+
+{% block body %}
+<div class="page-body">
+    <h1>ClassementPilote index</h1>
+<a href="{{ path('tri') }}">trti</a>
+                    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ClassementPId</th>
+                <th>SaisonYear</th>
+                <th>PilotesPiloteId</th>
+                <th>PointsTotal</th>
+                <th>Position</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+        {% for classement_pilote in classement_pilotes %}
+            <tr>
+                <td>{{ classement_pilote.classementPId }}</td>
+                <td>{{ classement_pilote.saisonsYear.year}}</td>
+                <td>{{ classement_pilote.pilotesPiloteId }}</td>
+                <td>{{ classement_pilote.pointsTotal }}</td>
+                <td>{{ classement_pilote.position }}</td>
+                <td>
+                   
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+    <div>
+    <a href="{{ path('classement_list') }}">   Imprimer   </a></div>
+    </d>
+{% endblock %}

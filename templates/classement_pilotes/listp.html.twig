@@ -1,0 +1,33 @@
+
+{% block body %}
+<h1 allign = "center">Imprimer</h1>
+<div class="page-body">
+    <h1>Classement Pilote </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ClassementPId</th>
+                <th>SaisonYear</th>
+                <th>PilotesPiloteId</th>
+                <th>PointsTotal</th>
+                <th>Position</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for classement_pilote in classement_pilotes %}
+            <tr>
+                <td>{{ classement_pilote.id }}</td>
+                <td>{{ classement_pilote.saisonsYear.year}}</td>
+                <td>{{ classement_pilote.pilotesPiloteId }}</td>
+                <td>{{ classement_pilote.pointsTotal }}</td>
+                <td>{{ classement_pilote.position }}</td>
+              
+            </tr>
+      
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

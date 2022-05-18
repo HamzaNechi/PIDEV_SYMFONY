@@ -1,0 +1,270 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Espace admin-membres
+{% endblock %}
+
+{% block body %}
+	<div class="page-body">
+		<div class="container-fluid">
+			<div class="page-header dash-breadcrumb">
+				<div class="row">
+					<div class="col-6">
+						<h3 class="f-w-600">Membres</h3>
+					</div>
+					<div class="col-6">
+						<div class="breadcrumb-sec">
+							<ul class="breadcrumb">
+								<li class="breadcrumb-item">
+									<a href="{{ path('admin')}}">
+										<i data-feather="home"></i>
+									</a>
+								</li>
+								<li class="breadcrumb-item active">Membres</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--debut-->
+		<div class="container-fluid product-wrapper">
+			<div class="product-grid">
+				<div class="feature-products">
+					<div class="row m-b-10">
+						<div class="col-md-3 col-sm-2 products-total"></div>
+						<div class="col-md-9 col-sm-10 featured-sec">
+							<span class="f-w-600">Page 1 sur 1</span>
+							<div class="select2-drpdwn-product select-options d-inline-block">
+								<select class="form-control btn-square" name="e" id="geteq">
+									<option value="0">Filtrer</option>
+									{% for e in equipe %}
+										<option value="{{ e.id }}">{{ e.nom }}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<div class="product-sidebar">
+								<div class="filter-section">
+									<div class="card">
+										<a href="{{ path('addMembre')}}" style="color:black;">
+											<div class="card-header">
+												<h6 class="mb-0 f-w-600">Ajouter un membre<span class="pull-right">
+														<i class="fa fa-plus toggle-data"></i>
+													</span>
+												</h6>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="pro-filter-sec">
+								<div class="product-sidebar">
+									<div class="filter-section">
+										<div class="card">
+											<a href="{{ path('affichePilote')}}" style="color:black;">
+												<div class="card-header">
+													<h6 class="mb-0 f-w-600">Afficher les pilotes<span class="pull-right">
+															<i class="fa fa-users toggle-data"></i>
+														</span>
+													</h6>
+												</div>
+											</a>
+
+										</div>
+									</div>
+								</div>
+								<div class="product-search">
+									<form>
+										<div class="form-group m-0">
+											<input class="form-control" id="search" type="search" placeholder="Chercher.." data-original-title="" title=""><i class="fa fa-search"></i>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+		<!-- Container-fluid starts-->
+		<div class="container-fluid default-dash">
+			<div class="row">
+				<div class="col-xl-6 des-xl-100 xl-100 box-col-12 deals-sec">
+					<div class="card">
+						<div class="pb-7" style="position: absolute;top: 1%;right: 37%;bottom:20%;">
+							<div style="display : none;" id="be">
+								<h5>
+									<span class="badge badge-light text-dark" id="e">Placer votre souris sur le membre pour connaitre son équipe</span>
+								</h5>
+							</div>
+						</div>
+						<div class="card-body pt-50">
+							<div class="best-dealer-table responsive-tbl">
+								<div class="item">
+									<div class="table-responsive product-list">
+										<table class="table table-bordernone">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Date Naissance</th>
+													<th>Nationalité</th>
+													<th>Numero</th>
+													<th>Actions</th>
+												</tr>
+											</thead>
+											<tbody id="table1">
+												{% for membre in membres %}
+													<tr id="membre" data-id="{{ membre.id }}">
+														<td>
+															<div class="t-title d-inline-block align-middle">
+																<a href="#1"><img class="img-40 m-r-15 rounded-circle align-top" src="{{asset('images/membre/' ~ membre.image )}}" alt="" data-original-title="" title=""></a>
+																<div class="status-circle bg-primary"></div>
+																<div class="d-inline-block">
+																	<span>{{ membre.nom }}</span>
+																	<p>{{ membre.role }}</p>
+																</div>
+															</div>
+														</td>
+														<td>{{ membre.date_naissance|date('Y-m-d') }}</td>
+
+														<td><img src="https://countryflagsapi.com/png/{{ membre.nationalite }}" width="10%" height="10%"></td>
+
+														{% if membre.role =="Pilote" %}
+															<td>{{ membre.numero }}</td>
+														{% else %}
+															<td>N/O</td>
+														{% endif %}
+														<td>
+															<a href="{{ path('editMembre' , {'id':membre.id})}}" class="btn btn-warning btn-pill   btn-air-warning">
+																<i data-feather="edit-2"></i>
+															</a>
+														</td>
+														<td>
+															<a href="{{ path('SupprimerMembre',{'id':membre.id })}}" class="btn btn-pill btn-secondary  btn-air-secondary">
+																<i data-feather="trash-2"></i>
+															</a>
+														</td>
+
+
+													</tr>
+												{% endfor %}
+											</tbody>
+
+											<tbody id="table2" style="display : none;"></tbody>
+										</table>
+
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+					<div class="navigation">
+						{{ knp_pagination_render(membres) }}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container-fluid Ends-->
+	</div>
+
+
+	<script>
+		// filtrer
+$(document).on("change", "#geteq", function () {
+var id = $(this).val();
+location.href = '/getMembreDequipe/' + id;
+// $("#e").html("Placer votre souris sur le membre pour connaitre son équipe");
+
+});
+// endfiltrer
+// get equipe
+$(document).on("mouseenter", "#membre", function () {
+var id = $(this).data('id');
+$.ajax({
+type: 'GET',
+url: '/getEquipeDuMembre/' + id,
+success: function (data) {
+var title = "L'équipe de ce membre est :" + data;
+$("#e").html(title);
+$("#be").show();
+}
+}, function () {
+alert("erreur : nom d'équipe n'est pas disponible");
+});
+
+});
+$(document).on("mouseleave", "#membre", function () {
+$("#be").hide(500);
+// $("#e").html("Placer votre souris sur le membre pour connaitre son équipe");
+
+});
+// end get equipe
+
+
+// search
+$(document).on("keyup", "#search", function () {
+var name = $(this).val();
+// console.log(name);
+$.ajax({
+type: 'GET',
+url: '/search_membre',
+dataType: "text",
+data: {
+name: name
+},
+success: function (data) {
+$("#table1").hide();
+$("#table2").show();
+$("#table2").empty();
+if (name != "") {
+var result = JSON.parse(data);
+$.each(result, function (key, arr) {
+$.each(arr, function (id, value) {
+if (key === 'membre') {
+if (id !== 'error') { // var path="images/membre/"+value[2];
+var path ="{{ asset('images/membre/') }}" + value[2];
+var pathDelete = "/SupprimerMembre/" + value[0];
+var pathUpdate = "/editMembre/" + value[0];
+var dateObj = value[5].date;
+var dateArray = dateObj.split(' ');
+var date = dateArray[0];
+var ch;
+var url = "https://countryflagsapi.com/png/" + value[4];
+var flag = "<img src=" + url + " width='10%' height='10%'>"
+if (value[3] == "Pilote") {
+ch = value[6];
+} else {
+ch = "N/O";
+}
+$("#table2").append('<tr id="membre" data-id="' + value[0] + '"><td><div class="t-title d-inline-block align-middle"><a href="#1"><img class="img-40 m-r-15 rounded-circle align-top" src=' + path + ' alt="" data-original-title="" title=""></a><div class="status-circle bg-primary"></div><div class="d-inline-block"><span>' + value[1] + '</span><p>' + value[3] + '</p></div></div></td><td>' + date + '</td><td>' + flag + '</td><td>' + ch + '</td><td><a href=' + pathUpdate + ' class="btn btn-pill btn-warning btn-air-warning btn-air-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg></a><a href=' + pathDelete + ' class="btn btn-pill btn-secondary btn-air-secondary btn-air-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg></a></td></tr>');
+} else {
+$("#table2").append('<h1>' + value + '</h1>');
+}
+}
+});
+});
+} else {
+$("#table2").hide();
+$("#table1").show();
+}
+
+}
+});
+
+});
+// endsearch
+	</script>
+{% endblock %}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Prime Cab HTML5 Responsive Template">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>F1-
+			{% block title %}{% endblock %}
+		</title>
+		<link href="{{asset('front/css/bootstrap.css')}}" rel="stylesheet">
+		<link href="{{asset('front/css/style.css')}}" rel="stylesheet">
+		<link href="{{asset('front/css/fontawesome-all.min.css')}}" rel="stylesheet">
+		<link id="switcher" href="{{asset('front/css/color.css')}}" rel="stylesheet">
+		<link href="{{asset('front/css/color-switcher.css')}}" rel="stylesheet">
+		<link href="{{asset('front/css/icomoon.css')}}" rel="stylesheet">
+		<link href="{{asset('front/css/stroke-gap.css')}}" rel="stylesheet">
+		<link href="{{asset('front/css/responsive.css')}}" rel="stylesheet">
+	</head>
+	<body>
+		<div class="tj-wrapper">
+			<div class="loader-outer">
+				<div class="tj-loader">
+					<img src="{{asset('front/images/pre-loader.png')}}" alt="">
+					<h2>Loading...</h2>
+				</div>
+			</div>
+			<header class="tj-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3 col-xs-12 col-sm-4">
+							<div class="tj-logo">
+								<h1>
+									<a href="{{ path ('app_index') }}">FormulaOne</a>
+								</h1>
+							</div>
+						</div>
+						<div class="col-md-3 col-xs-12 col-sm-4">
+							<div class="info_box">
+								<i class="fa fa-home"></i>
+								<div class="info_text">
+									<span class="info_title">Address</span>
+									<span>F1, Tunisie</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-xs-12 col-sm-4">
+							<div class="info_box">
+								<i class="fa fa-envelope"></i>
+								<div class="info_text">
+									<span class="info_title">Email</span>
+									<span>
+										<a href="mailto:primecab@booking.com">formulaone@contact.com</a>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-xs-12">
+							<div class="phone_info">
+								<div class="phone_icon">
+									<i class="fas fa-phone-volume"></i>
+								</div>
+								<div class="phone_text">
+									<span>
+										<a href="tel:1-234-000-2345">+(216) 22 368 968</a>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tj-nav-row sticky">
+					<div class="container">
+						<div class="row">
+							<div class="tj-nav-holder">
+								<nav class="navbar navbar-default">
+									<div class="navbar-header">
+										<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tj-navbar-collapse" aria-expanded="false">
+											<span class="sr-only">Menu</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
+									</div>
+									<div class="collapse navbar-collapse" id="tj-navbar-collapse">
+										<ul class="nav navbar-nav">
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accueil<i class="fa fa-angle-down" aria-hidden="true"></i>
+												</a>
+											</li>
+											<li>
+												<a href="aboutus.html">À propos</a>
+											</li>
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Classements<i class="fa fa-angle-down" aria-hidden="true"></i>
+												</a>
+												<ul class="dropdown-menu">
+													<li>
+														<a href="services.html">Our Services</a>
+													</li>
+												</ul>
+											</li>
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Équipe<i class="fa fa-angle-down" aria-hidden="true"></i>
+												</a>
+											</li>
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Circuits<i class="fa fa-angle-down" aria-hidden="true"></i>
+												</a>
+											</li>
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses<i class="fa fa-angle-down" aria-hidden="true"></i>
+												</a>
+											</li>
+											<li>
+												<a href="contact.html">Contact</a>
+											</li>
+										</ul>
+									</div>
+								</nav>
+								<div class="book_btn">
+									<a href="{{ path ('app_login') }}">Se Connecter
+										<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<div class="tj-inner-banner">
+				<div class="container">
+					<h2>Se Connecter</h2>
+				</div>
+			</div>
+			<div class="tj-breadcrumb">
+				<div class="container">
+					<ul class="breadcrumb-list">
+						<li>
+							<a href="home-1.html">Home</a>
+						</li>
+						<li class="active">Login</li>
+					</ul>
+				</div>
+			</div>
+			<section class="tj-login">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="tj-tabs">
+								<ul class="nav nav-tabs" role="tablist">
+									<li class="active">
+										<a href="#login" data-toggle="tab">Connexion</a>
+									</li>
+									<li class="">
+										<a href="#register" data-toggle="tab">Inscription</a>
+									</li>
+								</ul>
+							</div>
+							<div class="tab-content">
+								<class="tab-paneactive" id="login">
+									<div class="col-md-6 col-sm-6">
+										<div class="login-cta">
+											<ul class="cta-list">
+												<li>
+													<span class="icon-mail-envelope icomoon"></span>
+													<div class="cta-info">
+														<strong>30 Days Money Back Guarantee</strong>
+														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
+													</div>
+												</li>
+												<li>
+													<span class="icon icon-Headset"></span>
+													<div class="cta-info">
+														<strong>24/7 Customer Support</strong>
+														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
+													</div>
+												</li>
+												<li>
+													<span class="icon-lock icomoon"></span>
+													<div class="cta-info">
+														<strong>100% Secure Payment</strong>
+														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+										<div class="col-md-6 col-sm-6">
+											
+											{% block login %}{% endblock %}
+										</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="tj-copyright">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-sm-6">
+								<p>© Copyrights 2018
+									<a href="home-1.html">Prime Cab.</a>
+									All Rights Reserved.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<script src="{{asset('front/js/jquery-1.12.5.min.js')}}"></script>
+			<script src="{{asset('front/js/bootstrap.min.js')}}"></script>
+			<script src="{{asset('front/js/migrate.js')}}"></script>
+			<script src="{{asset('front/js/tweetie.js')}}"></script>
+			<script src="{{asset('front/js/color-switcher.js')}}"></script>
+			<script src="{{asset('front/js/custom.js')}}"></script>
+		</body>
+	</body>
+</html>

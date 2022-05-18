@@ -1,0 +1,50 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}équipes-membres{% endblock %}
+
+{% block body %}
+<!--Inner Banner Section Start-->
+	    	<div class="tj-inner-banner">
+	    		<div class="container">
+	    			<h2>Membres</h2>
+	    		</div>
+	    	</div>
+			<!--Inner Banner Section End-->
+			
+			<!--Breadcrumb Section Start-->
+	    	<div class="tj-breadcrumb">
+				<div class="container">
+					<ul class="breadcrumb-list">
+						<li><a href="{{ path('equipe_vitrine')}}">Équipes</a></li>
+						<li class="active">Membres</li>
+					</ul>
+				</div>
+	    	</div>
+			<!--Breadcrumb Section End-->
+
+            <!--Team Section Start-->
+			<section class="tj-team slideInLeft animated delay-3s">
+				<div class="container">
+					<div class="row">
+						
+                        {% for membre in membres %}
+						<div class="col-md-3 col-sm-3">
+							<div class="member-box">
+								<figure class="member-img">
+									<img src="{{ asset('images/membre/' ~ membre.image|e) }}" width="100%" height="100%" alt=""/>
+									<div class="member-overlay">
+										
+									</div>
+								</figure>
+								<div class="member-info">
+									<strong class="name">{{ membre.nom }}</strong>
+									<span>{{ membre.role }}</span>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</section>
+			<!--Team Section End-->
+{% endblock %}

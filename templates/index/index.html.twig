@@ -1,0 +1,353 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<!--Header Banner Content Start-->
+			<section class="tj-banner-form">
+				<div class="container">
+					<div class="row">
+						<!--Header Banner Caption Content Start-->
+						<div class="col-md-8 col-sm-7">
+							<div class="banner-caption">
+								<div class="banner-inner bounceInLeft animated delay-2s">
+									<strong>Fédération tunisienne de Formula One</strong>
+									<h2>suivez-nous sur votre propre appareil</h2>
+									<div class="banner-btns">
+										<a href="faq.html" class="btn-style-1"><i class="fas fa-desktop"></i> Télécharger App</a>
+										<a href="faq.html" class="btn-style-2"><i class="fab fa-android"></i> Télécharger App</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--Header Banner Caption Content End-->
+						<!--Header Banner Form Content Start-->
+						<div class="col-md-4 col-sm-5">
+							<div class="trip-outer">
+								<div class="trip-type-tabs">
+									<ul class="nav nav-tabs">
+										<li class="active"><a href="#one-way" data-toggle="tab">Chercher course</a></li>
+										{# <li><a href="#two-way" data-toggle="tab">Two Way</a></li> #}
+									</ul>
+								</div>
+								<!--Banner Tab Content Start-->
+								<div class="tab-content">
+									<div class="tab-pane active" id="one-way">
+										<!--Banner Form Content Start-->
+										<form method="POST" class="trip-type-frm">
+											<div class="field-outer">
+												<span class="fas fa-comment-dots"></span>
+												<input type="text" name="nom" placeholder="Nom">
+											</div>
+											<div class="field-outer">
+												<span class="fas fa-globe-asia"></span>
+												<input type="text" name="pays" placeholder="Pays">
+											</div>
+											<div class="field-outer">
+												<span class="fas fa-calendar-alt"></span>
+												<input type="text" name="date" placeholder="Date">
+											</div>
+											<div class="field-outer">
+												<span class="fas fa-tachometer-alt"></span>
+												<input type="text" name="drop_date" placeholder="Kilométrage">
+											</div>
+											{# <div class="field-outer">
+												<input type="checkbox" name="promo_code" id="promo_code">
+												<label for="promo_code">I Have Promotional Code</label>
+											</div> #}
+											<button type="submit" class="search-btn">Chercher<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>	
+										</form>
+										<!--Banner Form Content End-->
+									</div>
+								</div>
+								<!--Banner Tab Content End-->
+							</div>
+						</div>
+						<!--Header Banner Form Content End-->
+					</div>
+				</div>
+			</section>
+			<!--Header Banner Content End-->
+			
+			<!--Offer Content Start-->
+			<section class="tj-offers">
+				<div class="row">
+					<!--Offer Box Content Start-->
+					<div class="col-md-4 col-sm-6">
+						<div class="offer-box">
+							<img src="{{asset('front/images/offer-icon1.png')}}" alt=""/>
+							<div class="offer-info">
+								<h4>Meilleur prix</h4>
+								<p>A more recently with desktop softy  like aldus page maker.</p>
+							</div>
+						</div>
+					</div>
+					<!--Offer Box Content End-->
+					<!--Offer Box Content Start-->
+					<div class="col-md-4 col-sm-6">
+						<div class="offer-box">
+							<img src="{{asset('front/images/offer-icon2.png')}}" alt=""/>
+							<div class="offer-info">
+								<h4>Service client 24/7</h4>
+								<p>A more recently with desktop softy  like aldus page maker.</p>
+							</div>
+						</div>
+					</div>
+					<!--Offer Box Content End-->
+					<!--Offer Box Content Start-->
+					
+					<!--Offer Box Content End-->
+					<!--Offer Box Content Start-->
+					<div class="col-md-4 col-sm-6">
+						<div class="offer-box">
+							<img src="{{asset('front/images/offer-icon4.png')}}" alt=""/>
+							<div class="offer-info">
+								<h4>Réservations faciles</h4>
+								<p>A more recently with desktop softy  like aldus page maker.</p>
+							</div>
+						</div>
+					</div>
+					<!--Offer Box Content End-->
+				</div>
+			</section>
+			<!--Offer Content End-->
+			
+			<!--Welcome Section Content Start-->
+			<section class="tj-welcome">
+				<div class="container">
+					<div class="row">
+						<!--Welcome Section Start-->
+						<div class="col-md-6 col-sm-7">
+							<div class="about-info">
+								<div class="tj-heading-style">
+									<h3>Qui somme-nous</h3>
+								</div>
+								<p>Lorem Ipsum passages, and more recently with desktop publishing software like aldus pageMaker including versions of all the Lorem Ipsum generators on thet Internet tends to repeat predefined chunks as necessary, making this an web evolved over the years, sometimes by accident.</p>
+								<a href="fleet-grid.html">voir classements<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+								<ul class="facts-list">
+									<li>
+										<strong class="fact-count">{{ nbrequipe }}</strong>
+										<i class="fa fa-arrow-up"></i>
+										<span>équipes</span>
+									</li>
+									<li>
+										<strong class="fact-count">{{ nbrpilotes }}</strong>
+										<i class="fas fa-plus"></i>
+										<span>pilotes</span>
+									</li>
+									<li>
+										<strong class="fact-count">120</strong>
+										<i class="fas fa-arrow-up"></i>
+										<span>circuits</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!--Welcome Section End-->
+						<!--Welcome Section Image Box Start-->
+						<div class="col-md-6 col-sm-5">
+							<div class="welcome-banner">
+								<img src="{{asset('front/images/welcome-img.png')}}" alt=""/>
+							</div>
+						</div>
+						<!--Welcome Section Image Box End-->
+					</div>
+				</div>
+			</section>
+			<!--Welcome Section Content End-->
+			
+			
+			<section class="fleet-carousel">
+				<div class="col-md-12 col-sm-12">
+					<div class="tj-heading-style">
+						<h3>Classements</h3>
+					</div>
+				</div>
+				<div class="carousel-outer">
+					<div class="cab-carousel" id="cab-carousel">
+						<div class="fleet-item">
+							<img src="{{asset('front/images/fleet-carousel-img3.png')}}" alt=""/>
+							<div class="fleet-inner">
+								<h4>Ferrari</h4>
+								<ul>
+									<li><i class="fas fa-taxi"></i>Luxery</li>
+									<li><i class="fas fa-user-circle"></i>2 Passengers</li>
+									<li><i class="fas fa-tachometer-alt"></i>5.6/100 MPG</li>
+								</ul>
+								<strong class="price">$190<span> / day</span></strong>
+								<a href="booking-form.html">Voir détail<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+							</div>
+						</div>
+						<div class="fleet-item">
+							<img src="{{asset('front/images/fleet-carousel-img1.png')}}" alt=""/>
+							<div class="fleet-inner">
+								<h4>Mercedes Benz</h4>
+								<ul>
+									<li><i class="fas fa-taxi"></i>Luxery</li>
+									<li><i class="fas fa-user-circle"></i>5 Passengers</li>
+									<li><i class="fas fa-tachometer-alt"></i>7.6/100 MPG</li>
+								</ul>
+								<strong class="price">$390<span> / day</span></strong>
+								<a href="booking-form.html">Voir détail<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+							</div>
+						</div>
+						<div class="fleet-item">
+							<img src="{{asset('front/images/fleet-carousel-img2.png')}}" alt=""/>
+							<div class="fleet-inner">
+								<h4>Renault Sedan</h4>
+								<ul>
+									<li><i class="fas fa-taxi"></i>Luxery</li>
+									<li><i class="fas fa-user-circle"></i>5 Passengers</li>
+									<li><i class="fas fa-tachometer-alt"></i>5.6/100 MPG</li>
+								</ul>
+								<strong class="price">$250<span> / day</span></strong>
+								<a href="booking-form.html">Voir détail<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!--équipe Section Start-->
+			<section class="cab-services">
+				<div class="container">
+					<div class="row">
+						<!--Cab Services Heading Start-->
+						<div class="tj-heading-style">
+							<h3>Nos équipes</h3>
+							<p>Lorem Ipsum passages, and more recently with desktop publishing software like aldus pageMaker including versions.</p>
+						</div>
+						{% for equipe in equipes %}
+						<div class="col-md-4 col-sm-4">
+							<a href="{{ path('membre_vitrine',{'id':equipe.id})}}">
+							<div class="cab-service-box">
+								<!--Cab Services Thumb Start-->
+								<figure class="service-thumb">
+									<img src="images/equipe/{{ equipe.logo }}" width="110%" height="120%" alt=""/>
+								</figure>
+								<!--Cab Services Thumb End-->
+								<!--Cab Services Info Start-->
+								<div class="service-desc">
+									<h4>{{ equipe.nom }}</h4>
+									<p>{{ equipe.email }}</p>
+								</div>
+								<!--Cab Services Info End-->
+							</div>
+							</a>
+						</div>
+						{% endfor %}
+					</div>
+					<center>
+						<a href="{{ path('equipe_vitrine')}}">Voir tous<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+					</center>
+				</div>
+			</section>		
+			<!--Cab Services Section End-->
+					
+			<!--Booking Deals Section Start-->
+			<section class="tj-deals">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="tj-heading-style">
+								<h3>Nos circuits</h3>
+								<p>Lorem Ipsum passages, and more recently with desktop publishing software like aldus pageMaker</p>
+							</div>
+						</div>
+						<!-- Deal Box Content Start-->
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="deal-box">
+								<figure class="deal-thumb">
+									<img src="{{asset('front/images/deals-img1.png')}}" alt=""/>
+								</figure>
+								<div class="deal-info">
+									<h4>Oklahoma</h4>
+									<span>Starts from <strong>$200/day</strong></span>
+								</div>
+							</div>
+						</div>
+						<!-- Deal Box Content End-->
+						
+						<!-- Deal Box Content Start-->
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="deal-box">
+								<figure class="deal-thumb">
+									<img src="{{asset('front/images/deals-img2.png')}}" alt=""/>
+								</figure>
+								<div class="deal-info">
+									<h4>Brooklyn</h4>
+									<span>Starts from <strong>$190/day</strong></span>
+								</div>
+							</div>
+						</div>
+						<!-- Deal Box Content End-->
+						
+						<!-- Deal Box Content Start-->
+						<div class="col-md-4 col-sm-4 col-xs-6">
+							<div class="deal-box">
+								<figure class="deal-thumb">
+									<img src="{{asset('front/images/deals-img3.png')}}" alt=""/>
+								</figure>
+								<div class="deal-info">
+									<h4>Georgia</h4>
+									<span>Starts from <strong>$240/day</strong></span>
+								</div>
+							</div>
+						</div>
+						<!-- Deal Box Content End-->
+					</div>
+				</div>
+			</section>
+			<!--Booking Deals Section End-->
+			
+			
+			<!--News Content Start-->
+			<section class="tj-news">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="tj-heading-style">
+								<h3>Nos courses</h3>
+								<p>Lorem Ipsum passages, and more recently with desktop publishing software like aldus pageMaker including versions.</p>
+							</div>
+						</div>
+						<!--Newsbox Content Start-->
+						<div class="col-md-2 col-sm-12">
+							
+						</div>
+						<div class="col-md-8 col-sm-12">
+							<div  id="calendrier"></div>
+						</div>
+						<div class="col-md-2 col-sm-12">
+							
+						</div>
+							<br>
+						<div class="col-md-12 col-sm-12">
+							<center>
+								<a href="booking-form.html">Voir tous les courses<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+							</center>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--News Content End-->
+<script>
+	window.onload = () => {
+        let calendarElt = document.querySelector("#calendrier")
+
+        let calendar = new FullCalendar.Calendar(calendarElt, {
+            initialView: 'dayGridMonth',
+            locale: 'fr',
+            timeZone:'Europe/Paris',
+            headerToolbar: {
+                start: 'prev,next today',
+                center: 'title',
+                end: 'dayGridMonth,timeGridWeek'
+            },
+            events:{{ data|raw }}
+			})
+
+        calendar.render()
+    }
+</script>
+{% endblock %}

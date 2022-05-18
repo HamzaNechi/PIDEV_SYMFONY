@@ -1,0 +1,189 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Participations
+{% endblock %}
+{% block body %}
+	<div class="page-body">
+		<div class="container-fluid">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-sm-6">
+						<h3>Participations</h3>
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="{{ path('admin')}}">
+									<i data-feather="home"></i>
+								</a>
+							</li>
+							<li class="breadcrumb-item">Tableau de bord</li>
+							<li class="breadcrumb-item active">Participation</li>
+						</ol>
+					</div>
+					<div
+						class="col-sm-6">
+						<!-- Bookmark Start-->
+						<div class="bookmark"></div>
+						<!-- Bookmark Ends-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid product-wrapper">
+			<div class="product-grid">
+				<div class="feature-products">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="product-sidebar">
+								<div class="filter-section">
+									<div class="card">
+
+										<a href="{{path('addPart', {'c':course })}} " style="color:black" id="popover" data-trigger="hover">
+											<div class="card-header">
+												<h6 class="mb-0 f-w-600">Ajouter un participation<span class="pull-right">
+														<i class="fa fa-plus toggle-data"></i>
+													</span>
+												</h6>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="pro-filter-sec">
+								<div class="product-search">
+									<form>
+										<div class="form-group m-0">
+											<input class="form-control" id="search" type="search" placeholder="Chercher.." data-original-title="" title=""><i class="fa fa-search"></i>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- Container-fluid starts-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card">
+						<div class="card-body">
+							<div>
+								<div class="item">
+									<div class="table-responsive manage-invoice">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Pilote</th>
+													<th>Equipe</th>
+													<th>Course</th>
+													<th>Grid</th>
+													<th>Position</th>
+													<th>Points</th>
+													<th>Q1</th>
+													<th>Q2</th>
+													<th>Q3</th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for p in participations %}
+													<tr>
+														<td>{{p.pilote.id}}</td>
+														<td>{{p.equipe.nom}}</td>
+														<td>{{p.course.nom}}</td>
+														<td>{{p.grid}}</td>
+														<td>{{p.position}}</td>
+														<td>{{p.points}}</td>
+														{% if p.qualifying %}
+															<td>{{p.qualifying.q1}}</td>
+															<td>{{p.qualifying.q2}}</td>
+															<td>{{p.qualifying.q3}}</td>
+															<td>
+
+																<a href="{{path('editPartOrg', {'id':p.id })}}" type="button" class="btn  btn-pill btn-warning btn-air-warning btn-sm " data-bs-toggle="popover" title="Modifier participation">
+																	<i data-feather="edit-2"></i>
+																</a>
+
+																<a href="{{path('deletePartOrg', {'id':p.id })}}" type="button" class="btn btn-pill btn-danger btn-air-danger btn-sm" data-bs-toggle="popover" title="Supprimer participation">
+																	<i data-feather="trash-2"></i>
+																</a>
+																{% if (app.user.roles)[0] == "ROLE_ADMIN"  %}
+																	<a href="{{path('editQualifying', {'idq':p.qualifying.id})}}" type="button" class="btn btn-pill btn-warning btn-air-warning btn-sm" data-bs-toggle="popover" title="Modifier qualifying">
+																		<i data-feather="edit-2"></i>
+																	</a>
+																{% else %}
+
+																	<a href="{{path('editQualOrg', {'idq':p.qualifying.id})}}" type="button" class="btn btn-pill btn-warning btn-air-warning btn-sm" data-bs-toggle="popover" title="Modifier qualifying">
+																		<i data-feather="edit-2"></i>
+																	</a>
+																{% endif %}
+																<br>
+																<br>
+																<a href="{{path('participationDetail', {'id':p.id})}}" data-bs-toggle="popover" title="Consulter">
+																	<button type="button" class="btn  btn-info btn-pill btn-air-info btn-sm">
+																		<i data-feather="book-open"></i>
+																	</button>
+																</a>
+															</td>
+														{% else %}
+															<td>N/A</td>
+															<td>N/A</td>
+															<td>N/A</td>
+															<td>
+																<a href="{{path('editPartOrg', {'id':p.id })}}" class="btn btn-pill  btn-air-warning btn-warning btn-sm" data-bs-toggle="popover" title="Modifier participation">
+																	<i data-feather="edit-2"></i>
+																</a>
+																<a href="{{path('deletePartOrg', {'id':p.id })}}" class="btn btn-pill   btn-danger btn-air-danger btn-sm" data-bs-toggle="popover" title="Supprimer participation">
+																	<i data-feather="trash-2"></i>
+																</a>
+																{% if (app.user.roles)[0] == "ROLE_ADMIN"  %}
+																	<a href="{{path('addQualifying', {'idp':p.id })}}" class="btn btn-pill  btn-success btn-air-success btn-sm" data-bs-toggle="popover" title="Ajouter qualifying">
+																		<i data-feather="file-plus"></i>
+																	</a>
+																{% else %}
+																	<a href="{{path('addQualOrg', {'idp':p.id })}}" class="btn btn-pill  btn-success btn-air-success btn-sm" data-bs-toggle="popover" title="Ajouter qualifying">
+																		<i data-feather="file-plus"></i>
+																	</a>
+
+
+																{% endif %}
+
+
+															</td>
+														{% endif %}
+													</tr>
+												{% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		var popOverSettings = {
+placement: 'bottom',
+container: 'body',
+html: true,
+selector: '[rel="popover"]', // Sepcify the selector here
+content: function () {
+return $('#popover-content').html();
+}
+}
+
+$('body').popover(popOverSettings);
+	</script>
+
+
+{% endblock %}

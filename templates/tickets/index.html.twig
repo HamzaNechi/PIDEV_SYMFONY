@@ -1,0 +1,48 @@
+{% extends 'base-back.html.twig'%}
+
+            {% block body%}
+           <div class="page-body">
+    
+                           
+    
+<br> 
+<br>
+ <div class="card-block row">
+                    <div class="col-sm-12 col-lg-12 col-xl-12">
+                      <div class="table-responsive">
+                        <table class="table">
+
+                          <thead class="table-primary">
+                        
+                                <tr>
+                                 
+                                 <th scope="col">Nome du course</th>
+                                 
+                                 <th scope="col">TYPE</th>
+                                 <th scope="col">supprimer</th>
+                                 
+                                </tr>
+                          </thead>
+                          <tbody>
+                            {% for ticket in tickets %}
+                            <tr>
+                                
+                                <td>{{ticket.course.nom}}</td>
+                                
+                                <td>{{ticket.type}}</td>
+                                
+                                <td>
+                                    <a href="{{ path('app_tickets_delete',{'id':ticket.id}) }}"> supprimer <i data-feather="trash-2"></i></a>
+                                 </td>
+                                
+                            </tr>
+                            
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+</div>
+            {% endblock %}
+           

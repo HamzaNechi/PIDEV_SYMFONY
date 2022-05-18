@@ -1,0 +1,74 @@
+{% extends 'base-back.html.twig'%}
+
+            {% block body%}
+           <div class="page-body">
+    
+                            <a href="{{ path('app_courses_new')}}" >
+                            <div class="card-header">
+                              <h6 class="mb-0 f-w-600">Ajouter un Circuit<span class="pull-right"><i class="fa fa-chevron-down toggle-data"></i></span></h6>
+                            </div>
+                            </a>
+    
+<br> 
+<br>
+<div class="container-fluid default-dash">
+			<div class="row">
+				<div class="col-xl-6 des-xl-100 xl-100 box-col-12 deals-sec">
+					<div class="card">
+<div class="card-body pt-50">
+
+							<div class="best-dealer-table responsive-tbl">
+								<div class="item">
+									<div class="table-responsive product-list">
+										<table class="table table-bordernone">
+											<thead>
+												<tr>
+													<th>Nom Course</th>
+													<th>Date course</th>
+													<th>Circuit</th>
+													<th>Saison</th>
+													<th>Actions</th>
+												</tr>
+											</thead>
+											<tbody id="table1">
+												{% for course in courses %}
+													<tr id="courses" data-id="{{ course.id }}">
+													
+																	<td>{{ course.nom }}</td>
+													<td>{{ course.dateCourse|date('Y-m-d')}}</td>
+                                              <td>{{ course.circuitid.nom}}</td>
+															<td>{{ course.saison.year}}</td>
+														<td>
+															<a href="{{ path('app_courses_edit' , {'id':course.id})}}" class="btn btn-warning btn-pill   btn-air-warning">
+																<i data-feather="edit-2"></i>
+															</a>
+														</td>
+														<td>
+															<a href="{{ path('app_courses_delete',{'id':course.id })}}" class="btn btn-pill btn-secondary  btn-air-secondary">
+																<i data-feather="trash-2"></i>
+															</a>
+														</td>
+
+
+													</tr>
+												{% endfor %}
+											</tbody>
+
+											<tbody id="table2" style="display : none;"></tbody>
+										</table>
+
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+                   
+                  </div>
+                  
+</div>
+</div>
+</div>
+</div>
+            {% endblock %}
+           

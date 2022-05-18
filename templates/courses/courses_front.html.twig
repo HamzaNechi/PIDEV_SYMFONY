@@ -1,0 +1,164 @@
+{% extends 'base-front.html.twig'%}
+
+{% block title %}Courses index{% endblock %}
+
+{% block body %}
+
+<section class="car-fleet">
+				<div class="container">
+					<div class="row">
+						<!--Fleet Column Start-->
+						<div class="col-md-12 col-sm-12">
+							<div class="fleet-nav-outer">
+								<div class="row">
+									<!--Fleet Result Count Column Start-->
+									<div class="col-md-8 col-sm-8">
+										<div class="result-count">
+											<span>Showing 1–12 of 28 results</span>
+										</div>
+									</div>
+									
+									<!--Fleet Result Count Column End-->
+									<!--Fleet Nav Column Start-->
+									<div class="col-md-4 col-sm-4">
+										<div class="car-tabs">
+											<ul class="nav nav-tabs">
+												<li class="active"><a href="#car-grid" data-toggle="tab"><i class="fas fa-th"></i></a></li>
+												<li><a href="#car-list" data-toggle="tab"><i class="fas fa-list"></i></a></li>
+											</ul>
+										</div>
+									</div>
+									<!--Fleet Nav Column End-->
+								</div>
+							</div>
+							<div class="car-filter-holder">
+								<div class="row">
+									<!--Fleet Categories Column Start-->
+									<div class="col-md-3 col-sm-3">
+										
+									</div>
+									<!--Fleet Categories Column End-->
+									<!--Fleet Brand Column Start-->
+									<div class="col-md-3 col-sm-3">
+										
+									</div>
+									<!--Fleet Brand Column End-->
+									<!--Fleet Seats Column Start-->
+									<div class="col-md-3 col-sm-3">
+									
+									</div>
+									<div class="col-md-3 col-sm-3">
+										<div class="search_widget widget">
+									<form action="{{ path('Chercher')}}" class="search-form" methode="GET">
+										<input type="text" name="searchValue" name="s" placeholder="Search.." id="search-field">
+										<button type="submit"><i class="fas fa-search"></i></button>
+									</form>
+									</div>
+									</div>
+									
+													
+									<!--Fleet Seats Column End-->
+									<!--Fleet Price Filter Column Start-->
+									
+									<!--Fleet Fleet Price Filter Column End-->
+								</div>
+							</div>
+                            
+							<!--Tab Content Start-->
+							<div class="tab-content">
+
+								<!--Fleet Grid Tab Content Start-->
+								<div class="tab-pane active" id="car-grid">
+                                
+									<!--Fleet Grid Box Wrapper Start-->
+									<div class="fleet-grid">
+                                    
+
+										<div class="row">
+										{% for course in courses %}
+											<!--Fleet Grid Box Start-->
+
+											<div class="col-md-6 col-sm-6">
+												<div class="fleet-grid-box">
+													<!--Fleet Grid Thumb Start-->
+													<figure class="fleet-thumb">
+														<img src="{{asset('images/f1.jpg')}}" alt="">
+														<figcaption class="fleet-caption">
+															<div class="price-box">
+																<strong>$190 <span>/ day</span></strong>
+															</div>
+															<span class="rated">Top Rated</span>
+														</figcaption>
+													</figure>
+													<!--Fleet Grid Thumb End-->
+													<!--Fleet Grid Text Start-->
+													<div class="fleet-info-box">
+														<div class="fleet-info">
+															<h3>{{course.nom}}</h3>
+															<span class="fas fa-star"></span>
+															<span class="fas fa-star"></span>
+															<span class="fas fa-star"></span>
+															<span class="fas fa-star"></span>
+															<span class="fas fa-star"></span>
+															
+															<ul class="fleet-meta">
+																<li><i class="fas fa-taxi"></i>{{course.circuitid.nom}}</li>
+																<li><i class="fas fa-user-circle"></i>{{course.circuitid.capacite}}</li>
+																<li><i class="fas fa-tachometer-alt">{{ course.dateCourse ? course.dateCourse|date('Y-m-d') : '' }}</i></li>
+															</ul>
+														</div>
+														<a href="{{ path('app_courses_show', {'id': course.id}) }}" class="tj-btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+													</div>
+													<!--Fleet Grid Text End-->
+												</div>
+											</div>
+											{% endfor %}
+											<!--Fleet Grid Box End-->
+											
+											
+												</div>
+											</div>
+											<!--Fleet Grid Box End-->
+											
+																				</div>
+											</div>
+											<!--Fleet List Box End-->
+										</div>
+                                        
+									</div>
+									<!--Fleet List Box Wrapper End-->
+                                    
+								</div>
+                                
+								<!--Fleet List Tab Content End-->
+							</div>
+                            
+							<!--Tab Content End-->
+							<!--Pagination Section Start-->
+							<div class="pagination-box">
+								<nav aria-label="navigation">
+									<ul class="pagination">
+										<li>
+										  <a href="#" aria-label="Previous">
+											<i class="fas fa-angle-double-left"></i>
+										  </a>
+										</li>
+										<li><a href="#">1</a></li>
+										<li class="active"><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li>
+										  <a href="#" aria-label="Next">
+											<i class="fas fa-angle-double-right"></i>
+										  </a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<!--Pagination Section End-->
+						</div>
+						<!--Fleet Column End-->
+					</div>
+				</div>
+			</section>
+            
+{% endblock %}

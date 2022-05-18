@@ -1,0 +1,88 @@
+{% extends 'base-back.html.twig'%}
+{% block body %}
+	<div class="page-body">
+		<div class="container-fluid">
+			<div class="page-header">
+				<div class="row"></div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="page-header">
+				<div class="row"></div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-xl-2"></div>
+				<div class="col-sm-12 col-xl-8">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-header pb-0">
+									<h5>Modifier circuit</h5>
+								</div>
+								<div class="card-body">
+
+									<form class="theme-form" action="{{ path('mod_circuit' , {'id': circuit.id})}}" method="post" enctype="multipart/form-data">
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Nom</label>
+											<div class="col-sm-9">
+												<input class="form-control" name="nom" type="text" placeholder="Nom" value="{{ circuit.nom }}">
+											</div>
+										</div>
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">pays</label>
+											<div class="col-sm-9">
+												<input class="form-control" name="pays" type="text" placeholder="Nom" value="{{ circuit.pays }}">
+											</div>
+										</div>
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Longeur</label>
+											<div class="col-sm-9">
+												<input class="form-control" name="longeur" type="text" placeholder="Nom" value="{{ circuit.longeur }}">
+											</div>
+										</div>
+
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Course Distance</label>
+											<div class="col-sm-9">
+												<input class="form-control" name="course_distance" type="text" placeholder="Nom" value="{{ circuit.coursedistance }}">
+											</div>
+										</div>
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Description</label>
+											<div class="col-sm-9">
+												<input class="form-control" name="description" type="text" placeholder="Nom" value="{{ circuit.description }}">
+											</div>
+										</div>
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">capacite</label>
+											<div class="col-sm-9">
+												<input class="form-control" name="capacite" type="text" placeholder="Nom" value="{{ circuit.capacite }}">
+											</div>
+										</div>
+
+										<div class="mb-3 row">
+											<label class="col-sm-3 col-form-label" for="inputPassword3">Image</label>
+											<div class="col-sm-9">
+												<input class="form-control" accept="image/*" name="file" type="file">
+												<input type="hidden" name="path" value="{{ circuit.image }}">
+											</div>
+										</div>
+
+
+										<div class="card-footer pt-0">
+											<button class="btn btn-primary" type="submit">Modifier</button>
+											<button class="btn btn-dark" type="reset">Annuler</button>
+										</div>
+
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

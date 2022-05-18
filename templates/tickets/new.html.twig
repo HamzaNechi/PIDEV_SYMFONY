@@ -1,0 +1,86 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}New Tickets{% endblock %}
+
+{% block body %}
+
+                 <div class="container">
+					<div class="row">
+						<div class="col-md-8 col-sm-8 col-xs-12">
+							<div class="tj-tabs">
+								<ul class="nav nav-tabs" role="tablist">
+									<li class="active"><a href="#confirm_booking" data-toggle="tab">Confirm Your Tickets</a></li>
+								</ul>
+							</div>
+							<div class="tab-content">
+								<div class="tab-pane active" id="confirm_booking">
+                                    <form action="{{ path('ajouterTicket')}}"  class="cb-frm" method="POST" id="rider-info" novalidate="novalidate">
+									
+										
+										<div class="col-md-6 col-sm-6">
+                                        <div class="field-holder">
+											<div class="class="car-list"">
+												 Select type
+												 <select name="type" class="selectpicker">
+                                                        
+														<option value="VIP" data-hrrate="30" data-dayrate="150">VIP</option>
+														<option value="LOUNGE" data-hrrate="40" data-dayrate="190">LOUNGE</option>
+														<option value="VIRAGE DROITE" data-hrrate="65" data-dayrate="200">VIRAGE DROITE</option>
+														<option value="VIRAGE GAUCHE" data-hrrate="20" data-dayrate="100">VIRAGE GAUCHE</option>
+                                                  </select>
+                                            </div>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6">
+											<div class="class="car-list"">
+												<select name="course">
+                                                       Nom du Course  <option value="{{course.id }}">{{course.nom }}</option>
+                                                 </select>
+											</div>
+										</div>
+										
+										<div class="col-md-12 col-sm-12">
+											<a href="{{ path('app_courses_index_front')}}" class="back-btn"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Go Back</a>
+											<button type="submit" class="book-btn" id="ride-bbtn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+										</div>
+									</form>
+									<!-- Start PayPal Form Section -->
+									<form action="" method="POST" id="paypal_frm">
+										<input type="hidden" name="cmd" value="_ext-enter">
+										<input type="hidden" name="redirect_cmd" value="_xclick">
+										<input type="hidden" name="business" value="">
+										<input type="hidden" name="item_name" value="">
+										<input type="hidden" name="item_number" value="">
+										<input type="hidden" name="amount" value="">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="cancel_return" value="<?php echo $_SERVER['HTTP_REFERER']; ?>">
+										<input type="hidden" name="custom" value="">
+										<input type="hidden" name="on0" value="Rider Name:">
+										<input type="hidden" name="os0" value="">
+										<input type="hidden" name="on1" value="Rider Email:">
+										<input type="hidden" name="os1" value="">
+										<input type="hidden" name="on2" value="Rider Phone:">
+										<input type="hidden" name="os2" value="">
+										<input type="hidden" name="on3" value="Trip Estimation:">
+										<input type="hidden" name="os3" value="">
+										<input type="hidden" name="on4" value="Selected Ride Car:">
+										<input type="hidden" name="os4" value="">
+									</form>
+									<!-- End PayPal Form Section -->
+								</div>
+							</div>
+						</div>
+						
+						
+											    <!-- Modal Popup Content End-->
+										  	</div>
+										</div>
+										<!-- Modal Popup End -->
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+{% endblock %}

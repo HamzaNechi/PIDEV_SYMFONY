@@ -1,0 +1,190 @@
+{% block body %}
+<div align="center" class="page-body">
+	<div class="container-fluid">
+		<div class="page-header">
+			<div class="row"></div>
+		</div>
+	</div>
+	<!-- Container-fluid starts-->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12 col-xl-2"></div>
+			<div class="col-sm-12 col-xl-8">
+				<div class="row">
+
+
+					<div class="col-xl-5 box-col-6 proorder-xl-3 xl-100">
+						<div class="card">
+							<div class="card-body">
+								<div class="pro-group pt-0">
+									<div class="product-page-details">
+										<h1>Particpation details</h1>
+									</div>
+								</div>
+								<div class="pro-group" style="margin:20px">
+									<div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="product-page-details">
+													<h3>
+														<u>
+															Course</u>
+													</h3>
+												</div>
+												<table>
+													<tbody>
+														<tr>
+															<td>
+																<b>Saison &nbsp;&nbsp;&nbsp;:</b>
+															</td>
+															<td>{{participation.course.getSaison().getYear()}}</td>
+														</tr>
+														<tr>
+															<td>
+																<b>Nom du course &nbsp;&nbsp;&nbsp;:</b>
+															</td>
+															<td>{{participation.course.getNom()}}</td>
+														</tr>
+														<tr>
+															<td>
+																<b>Date &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;</b>
+															</td>
+															<td>{{participation.course.getDateCourse()|date('Y-m-d')}}</td>
+														</tr>
+														<tr>
+															<td>
+																<b>Circuit &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;</b>
+															</td>
+															<td>{{participation.course.getCircuitId().getNom()}}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr style="width:50%">
+								<div class="pro-group" style="margin:20px">
+									<div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="product-page-details">
+													<h3>
+														<u>
+															Participant</u>
+													</h3>
+												</div>
+												<table>
+													<tbody>
+														<tr>
+															<td>
+																<b>Pilote &nbsp;&nbsp;&nbsp;:</b>
+															</td>
+															<td>{{pilote.getNom()}}
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<b>Numero &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;</b>
+															</td>
+															<td>{{participation.getPilote().getNumero()}}</td>
+														</tr>
+														<tr>
+															<td>
+																<b>Equipe &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;</b>
+															</td>
+															<td>{{participation.getEquipe().getNom()}}
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr style="width:50%">
+								<div class="pro-group" style="margin:20px">
+									<div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="product-page-details">
+													<h3>
+														<u>
+															Qualifying</u>
+													</h3>
+												</div>
+												<table>
+													<tbody>
+														<tr>
+															<td>
+																<b>Q1 &nbsp;&nbsp;&nbsp;:</b>
+															</td>
+															<td>{{participation.getQualifying().getQ1()}}
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<b>Q2 &nbsp;&nbsp;&nbsp;:</b>
+															</td>
+															<td>{{participation.getQualifying().getQ2()}}</td>
+														</tr>
+														<tr>
+															<td>
+																<b>Q3 &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;</b>
+															</td>
+															<td>{{participation.getQualifying().getQ3()}}</td>
+														</tr>
+														<tr>
+															<td>
+																<b>Grid &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;</b>
+															</td>
+															<td>{{participation.getQualifying().getPosition()}}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr style="width:50%">
+								<div class="pro-group" style="margin:20px">
+									<div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="product-page-details">
+													<h3>
+														<u>
+															Resultat</u>
+													</h3>
+												</div>
+												<table>
+													<tbody>
+														<tr>
+															<td>
+																<b>Psotion &nbsp;&nbsp;&nbsp;:</b>
+															</td>
+															<td>{{participation.getPosition()}}</td>
+														</tr>
+														<tr>
+															<td>
+																<b>Points &nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;</b>
+															</td>
+															<td>{{participation.getPoints()}}</td>
+														</tr>
+
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

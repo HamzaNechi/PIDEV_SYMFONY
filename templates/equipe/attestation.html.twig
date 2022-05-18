@@ -1,0 +1,134 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Attestation d'inscription{% endblock %}
+
+{% block body %}
+<div class="page-body">
+          <div class="container-fluid">
+            <div class="page-header">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3>Attestation d'inscription</h3>
+                  
+                </div>
+                <div class="col-sm-6">
+                  <!-- Bookmark Start-->
+                  <div class="bookmark">
+                    
+                  </div>
+                  <!-- Bookmark Ends-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="container invoice">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-body">                            
+                    <div>
+                      <div>
+                        <div class="row invo-header">
+                          <div class="col-sm-6">
+                            <div class="media">
+                              <div class="media-body m-l-0">
+                                <h4 class="media-heading f-w-600">FormulaOne</h4>
+                                <p>formulaone@contact.com<br><span class="digits">+(216) 22 368 968</span></p>
+                              </div>
+                            </div>
+                            <!-- End Info-->
+                          </div>
+
+
+                          
+
+                          <div class="col-sm-6">
+                            <div class="text-md-end text-xs-center">
+                              <h3>{{equipe.nom}}</h3>
+                              <p>{{ equipe.email }}<br> 
+                                <img src="https://countryflagsapi.com/png/{{ equipe.pays_origine }}" width="5%" height="5%"></p>
+                            </div>
+                            <!-- End Title                                 -->
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End InvoiceTop-->
+                      <div class="row invo-profile">
+                        
+                        <div class="col-xl-12">
+                          <div class="invo-profile-left">
+                            <div id="project">
+                              <h6>Attestation de l'administration</h6>
+                              <p>L'équipe <b>{{ equipe.nom }}</b> a été inscrit dans la tournoi tunisienne de FormulaOne . <br>Les membres inscrit dans cette équipe :</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End Invoice Mid-->
+                      <div>
+                        <div class="table-responsive invoice-table" id="table">
+                          <table class="table table-bordered table-striped">
+                            <tbody>
+                              <tr>
+                                <td class="item">
+                                  <h6 class="p-2 mb-0">Nom</h6>
+                                </td>
+                                <td class="Hours">
+                                  <h6 class="p-2 mb-0">Role</h6>
+                                </td>
+                                <td class="Rate">
+                                  <h6 class="p-2 mb-0">Nationalité</h6>
+                                </td>
+                                <td class="subtotal">
+                                  <h6 class="p-2 mb-0">Date de naissance</h6>
+                                </td>
+                              </tr>
+
+                              {% for m in membre%}
+                              <tr>
+                                <td>
+                                  <label>{{ m.nom  }}</label>
+                                </td>
+                                <td>
+                                  <p class="itemtext digits">{{ m.role }}</p>
+                                </td>
+                                <td>
+                                  <p class="itemtext digits">{{ m.nationalite }}</p>
+                                </td>
+                                <td>
+                                  <p class="itemtext digits">{{ m.date_naissance | date('Y-m-d')}}</p>
+                                </td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- End Table-->
+                        <div class="row mt-3">
+                          <div class="col-md-8">
+                            <div>
+                              <p class="legal"><strong>Merci pour votre inscription</strong></p>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End InvoiceBot-->
+                    </div>
+                    <div class="col-sm-12 text-center mt-3">
+                      <a href="{{ path('generate_pdf',{'id':equipe.id})}}"><button class="btn btn btn-primary me-2" type="button">Télécharger pdf</button></a>
+                      <a href="{{ path('email',{'id':equipe.id}) }}"><button class="btn btn btn-dark me-2" type="button">Envoyer à {{ equipe.nom }}</button></a>
+                    </div>
+                    <!-- End Invoice-->
+                    <!-- End Invoice Holder-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+{% endblock %}
